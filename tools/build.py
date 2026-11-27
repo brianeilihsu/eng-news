@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Build the site: data/YYYY-MM-DD.json -> YYYY-MM-DD/index.html, plus index.html.
+"""Build the site: data/YYYY-MM-DD.json -> docs/YYYY-MM-DD/index.html, plus docs/index.html.
+GitHub Pages serves the docs/ folder (Settings -> Pages -> main /docs).
 Usage: python3 tools/build.py   (run from the repo root)
 """
 import glob, html, json, os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUT = os.path.join(ROOT, "docs")
 TPL = open(os.path.join(ROOT, "tools", "day.template.html"), encoding="utf-8").read()
 
 
@@ -15,7 +17,7 @@ def js_safe(obj):
 days = []
 for path in sorted(glob.glob(os.path.join(ROOT, "data", "*.json"))):
     d = json.load(open(path, encoding="utf-8"))
-    out_dir = os.path.join(ROOT, d["date"])
+    out_dir = os.path.join(OUT, d["date"])
     os.makedirs(out_dir, exist_ok=True)
     page = (TPL.replace("__TITLE__", html.escape(f'{d["title"]}｜每日英文單字 {d["date"]}'))
                .replace("__DESC__", html.escape("今日單字：" + "、".join(w["word"] for w in d["words"])))
@@ -71,5 +73,5 @@ INDEX = f'''<!DOCTYPE html>
 </body>
 </html>
 '''
-open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(INDEX)
-print(f"built {len(days)} day page(s) + index.html")
+open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(INDEX)
+print(f"built {len(days)} day page(s) + index.html in docs/")

@@ -22,8 +22,8 @@
    - clone repo 後，照 `data/` 裡既有 JSON 的格式，新增 `data/YYYY-MM-DD.json`。
    - 文章中的目標單字用 `{編號|單字原文}` 標記，例如 `{5|tampered with}`。
    - 小測驗空格寫 `___`，答案 `a` 填單字編號；答案形態跟原形不同時，用 `form` 寫出實際形態。
-   - 執行 `python3 tools/build.py`，會產生 `YYYY-MM-DD/index.html` 並更新首頁。
-   - 不要改 `tools/` 和 `CNAME`，除非 build 失敗。
+   - 執行 `python3 tools/build.py`，會產生 `docs/YYYY-MM-DD/index.html` 並更新首頁 `docs/index.html`（GitHub Pages 從 `docs/` 部署）。
+   - 不要改 `tools/` 和 `docs/CNAME`，除非 build 失敗。
 7. **檢查**：用 Playwright 分別以桌機（1100px）和手機（390px）寬度開新頁面：
    - 確認沒有 JS 錯誤、沒有水平捲動；
    - 滑過或點擊單字會跳出說明框；
