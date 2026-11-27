@@ -198,6 +198,8 @@
   pop.addEventListener('mouseleave', () => fine && hideLater());
   pop.addEventListener('click', e => {
     e.stopPropagation();
+    const s = e.target.closest('[data-say]');
+    if(s){ speak(s.dataset.say, parseFloat(s.dataset.rate||'0.9')); return; }
     const g = e.target.closest('[data-go]');
     if(g){ e.preventDefault(); hide(); const c = $('w'+g.dataset.go); c.scrollIntoView({behavior:'smooth'}); c.classList.remove('flash'); void c.offsetWidth; c.classList.add('flash'); }
   });
