@@ -1,0 +1,11 @@
+/* Shared by the home page and daily pages. */
+:root{--main:#1E3A5F;--accent:#E07A3F;--soft:#F4F1EA;--line:#D9D3C7;--ink:#222;--mute:#6B6B6B;--hl:rgba(240,160,90,.32);--bg:#fff;color-scheme:light}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:"Noto Sans TC","Noto Sans CJK TC","PingFang TC",sans-serif;color:var(--ink);background:var(--bg);font-size:16px;line-height:1.65}
+.en{font-family:"Noto Serif","DejaVu Serif",Georgia,serif}
+a{color:var(--main)}
+.topbar{height:10px;background:var(--main);position:relative}
+.topbar::after{content:"";position:absolute;left:0;bottom:-3px;width:140px;height:3px;background:var(--accent)}
+.wrap{max-width:760px;margin:0 auto;padding:22px 16px 48px}
+.kicker{font-size:12px;letter-spacing:.15em;color:var(--accent);font-weight:700}

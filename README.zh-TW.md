@@ -20,11 +20,17 @@
 ```
 data/        每天的內容（原始資料），一天一個 YYYY-MM-DD.json
 tools/
+  new_day.py         產生 data/YYYY-MM-DD.json 骨架，裡面的 TODO 待填
+  validate.py        檢查 data/*.json（build.py 會自動執行）
   build.py           產生網站：data/*.json → docs/
-  day.template.html  單日頁面模板
+  day.template.html  單日頁面 HTML 模板
+  static/            原樣複製到 docs/
+    assets/          base.css（共用）、day.css、day.js（單日頁互動）
+  test_*.py          測試：python3 -m unittest discover -s tools
   DAILY_TASK.md      每日排程的完整指示
 docs/        build 產生的網站（GitHub Pages 從這裡部署）
   index.html         首頁，列出所有日期
+  assets/            從 tools/static/assets/ 複製來的 CSS/JS
   YYYY-MM-DD/        單日頁面
   CNAME              自訂網域
 ```
@@ -37,7 +43,7 @@ docs/        build 產生的網站（GitHub Pages 從這裡部署）
 python3 tools/build.py
 ```
 
-只需要 Python 3，沒有其他相依套件。在本機預覽：
+只需要 Python 3，沒有其他相依套件。build 會先檢查所有 `data/*.json`，有任何一個不合格就中止，不會動到 `docs/`。CSS/JS 網址帶有內容雜湊 `?v=`，改了之後瀏覽器會立刻抓新版。在本機預覽：
 
 ```bash
 python3 -m http.server -d docs 8000
@@ -59,7 +65,7 @@ python3 -m http.server -d docs 8000
 | `words` | 8 個單字：`word`, `kk`, `pos`, `zh`, `def`, `sentence`, `collocations`, `example`, `example_src`, `related` |
 | `quiz` | 8 題填空：`q`（空格寫 `___`）、`a`（單字編號）、`form`（答案形態與原形不同時填實際形態） |
 
-新增一天時，照既有 JSON 的格式寫即可。
+新增一天時，執行 `python3 tools/new_day.py YYYY-MM-DD`（預設為台北時間今天）產生格式正確的骨架，把所有 `TODO` 和小測驗的 `"a": null` 填好，再執行 `python3 tools/validate.py`。沒填或格式錯的地方會列出精確位置，例如 `words[3].kk`。
 
 ## 每日自動更新
 
@@ -68,7 +74,7 @@ python3 -m http.server -d docs 8000
 1. 從主流英文媒體挑一則最近 24 小時的新聞（主題依星期輪替）
 2. 改寫成 350–420 字的文章，選 8 個 7000 單以外的單字
 3. 為每個單字找網路上真實存在的例句並標出處
-4. 新增 `data/YYYY-MM-DD.json`，執行 `tools/build.py`
+4. 用 `tools/new_day.py` 產生骨架並填好，執行 `tools/validate.py` 和 `tools/build.py`
 5. 用 Playwright 以桌機與手機寬度檢查頁面
 6. commit 並 push 到 `main`，GitHub Pages 自動部署
 

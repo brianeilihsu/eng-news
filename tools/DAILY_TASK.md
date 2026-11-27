@@ -19,11 +19,13 @@
    - 每句 15 字以內；8 句盡量來自不同網站，同一網站最多 2 句。找不到可以確認的例句就換單字。
 5. **小測驗**：8 題填空，每題一個新句子，跟文章和例句都不同。
 6. **產生網站**：
-   - clone repo 後，照 `data/` 裡既有 JSON 的格式，新增 `data/YYYY-MM-DD.json`。
+   - clone repo 後，執行 `python3 tools/new_day.py YYYY-MM-DD`，會產生 `data/YYYY-MM-DD.json` 骨架：日期已填好，8 個單字、8 題小測驗的欄位都在，每個待填欄位寫著 `TODO`。不要自己從頭寫 JSON。
+   - 把每個 `TODO` 換成實際內容，小測驗的 `"a": null` 換成單字編號。段落數依文章調整（骨架預設 4 段），`article` 和 `article_zh` 要一樣多段。不知道某欄怎麼寫，參考 `data/` 裡既有的 JSON。
    - 文章中的目標單字用 `{編號|單字原文}` 標記，例如 `{5|tampered with}`。
    - 每段的中文翻譯放在 `article_zh` 陣列，順序、數量和 `article` 一致（純文字，不加單字標記）。頁面會在每段下方顯示可展開的「中文翻譯」。
    - 小測驗空格寫 `___`，答案 `a` 填單字編號；答案形態跟原形不同時，用 `form` 寫出實際形態。
-   - 執行 `python3 tools/build.py`，會產生 `docs/YYYY-MM-DD/index.html` 並更新首頁 `docs/index.html`（GitHub Pages 從 `docs/` 部署）。
+   - 執行 `python3 tools/validate.py`，照錯誤訊息修到出現 `✓` 為止（訊息會指出位置，例如 `words[3].kk`、`quiz[5].a`）。
+   - 執行 `python3 tools/build.py`，會產生 `docs/YYYY-MM-DD/index.html` 並更新首頁 `docs/index.html`（GitHub Pages 從 `docs/` 部署）。build 也會先跑同樣的檢查，不合格就不會產生網站。
    - 不要改 `tools/` 和 `docs/CNAME`，除非 build 失敗。
 7. **檢查**：用 Playwright 分別以桌機（1100px）和手機（390px）寬度開新頁面：
    - 確認沒有 JS 錯誤、沒有水平捲動；

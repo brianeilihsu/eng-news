@@ -1,49 +1,80 @@
 #!/usr/bin/env python3
 """Build the site: data/YYYY-MM-DD.json -> docs/YYYY-MM-DD/index.html, plus docs/index.html.
 GitHub Pages serves the docs/ folder (Settings -> Pages -> main /docs).
+Every data file is validated first; if any is invalid, nothing is written.
 Usage: python3 tools/build.py   (run from the repo root)
 """
-import glob, html, json, os, shutil
+from __future__ import annotations
+
+import glob
+import hashlib
+import html
+import json
+import os
+import shutil
+import sys
+from typing import List
+
+from validate import validate_file
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "docs")
-TPL = open(os.path.join(ROOT, "tools", "day.template.html"), encoding="utf-8").read()
+STATIC = os.path.join(ROOT, "tools", "static")
+TEMPLATE = os.path.join(ROOT, "tools", "day.template.html")
+ASSET_HASH_LEN = 10
 
 
-def page_title(d):
+def page_title(d: dict) -> str:
     m, dd = d["date"].split("-")[1:]
     return f"{int(m)}/{int(dd)} {d['title']}｜Daily Vocab"
 
 
-def js_safe(obj):
+def js_safe(obj: object) -> str:
     return json.dumps(obj, ensure_ascii=False).replace("</", "<\\/")
 
 
-# static assets (favicon etc.) -> docs/
-os.makedirs(OUT, exist_ok=True)
-for f in glob.glob(os.path.join(ROOT, "tools", "static", "*")):
-    shutil.copy(f, OUT)
+def asset_version() -> str:
+    """Short hash of tools/static/assets/*, appended as ?v= so browsers refetch after changes."""
+    h = hashlib.sha256()
+    for path in sorted(glob.glob(os.path.join(STATIC, "assets", "*"))):
+        h.update(os.path.basename(path).encode())
+        with open(path, "rb") as f:
+            h.update(f.read())
+    return h.hexdigest()[:ASSET_HASH_LEN]
 
-days = []
-for path in sorted(glob.glob(os.path.join(ROOT, "data", "*.json"))):
-    d = json.load(open(path, encoding="utf-8"))
-    out_dir = os.path.join(OUT, d["date"])
-    os.makedirs(out_dir, exist_ok=True)
-    page = (TPL.replace("__TITLE__", html.escape(page_title(d)))
-               .replace("__DESC__", html.escape("今日單字：" + "、".join(w["word"] for w in d["words"])))
-               .replace("__DATA__", js_safe(d)))
-    open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8").write(page)
-    days.append(d)
 
-days.sort(key=lambda d: d["date"], reverse=True)
-items = "\n".join(
-    f'''<a class="item" href="{d["date"]}/">
+def load_lessons(paths: List[str]) -> List[dict]:
+    """Validate every file and exit with a report if any is invalid."""
+    report = [(p, validate_file(p)) for p in paths]
+    bad = [(p, errs) for p, errs in report if errs]
+    if bad:
+        for path, errs in bad:
+            print(f"✗ {os.path.relpath(path, ROOT)}", file=sys.stderr)
+            for e in errs:
+                print(f"    - {e}", file=sys.stderr)
+        sys.exit(f"build aborted: {len(bad)} invalid data file(s); docs/ was not changed")
+    lessons = []
+    for p in paths:
+        with open(p, encoding="utf-8") as f:
+            lessons.append(json.load(f))
+    return lessons
+
+
+def render_day(template: str, d: dict, version: str) -> str:
+    return (template.replace("__TITLE__", html.escape(page_title(d)))
+                    .replace("__DESC__", html.escape("今日單字：" + "、".join(w["word"] for w in d["words"])))
+                    .replace("__ASSET_V__", version)
+                    .replace("__DATA__", js_safe(d)))
+
+
+def render_index(days: List[dict], version: str) -> str:
+    items = "\n".join(
+        f'''<a class="item" href="{d["date"]}/">
       <div class="d">{html.escape(d["date_zh"])}<span class="tp">{html.escape(d["topic"])}</span></div>
       <div class="t en">{html.escape(d["title"])}</div>
       <div class="ws en">{" ・ ".join(html.escape(w["word"]) for w in d["words"])}</div>
-    </a>''' for d in days)
-
-INDEX = f'''<!DOCTYPE html>
+    </a>''' for d in sorted(days, key=lambda d: d["date"], reverse=True))
+    return f'''<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
@@ -55,15 +86,9 @@ INDEX = f'''<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/base.css?v={version}">
 <style>
-  :root{{--main:#1E3A5F;--accent:#E07A3F;--soft:#F4F1EA;--line:#D9D3C7;--ink:#222;--mute:#6B6B6B;color-scheme:light}}
-  *{{box-sizing:border-box;margin:0;padding:0}}
-  body{{font-family:"Noto Sans TC","Noto Sans CJK TC","PingFang TC",sans-serif;color:var(--ink);background:#fff;line-height:1.6}}
-  .en{{font-family:"Noto Serif","DejaVu Serif",Georgia,serif}}
-  .topbar{{height:10px;background:var(--main);position:relative}}
-  .topbar::after{{content:"";position:absolute;left:0;bottom:-3px;width:140px;height:3px;background:var(--accent)}}
-  .wrap{{max-width:760px;margin:0 auto;padding:26px 16px 48px}}
-  .kicker{{font-size:12px;letter-spacing:.15em;color:var(--accent);font-weight:700}}
+  .wrap{{padding-top:26px}}
   h1{{font-size:30px;color:var(--main);margin:4px 0 6px}}
   .sub{{color:var(--mute);font-size:14px;margin-bottom:22px}}
   .item{{display:block;text-decoration:none;color:inherit;border:1px solid var(--line);border-left:6px solid var(--main);border-radius:6px;padding:12px 16px;margin-bottom:12px;transition:border-color .15s,background .15s}}
@@ -85,5 +110,27 @@ INDEX = f'''<!DOCTYPE html>
 </body>
 </html>
 '''
-open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(INDEX)
-print(f"built {len(days)} day page(s) + index.html in docs/")
+
+
+def write(path: str, text: str) -> None:
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(text)
+
+
+def main() -> None:
+    days = load_lessons(sorted(glob.glob(os.path.join(ROOT, "data", "*.json"))))
+    with open(TEMPLATE, encoding="utf-8") as f:
+        template = f.read()
+    version = asset_version()
+
+    # static files (favicon, assets/*.css|js) -> docs/
+    shutil.copytree(STATIC, OUT, dirs_exist_ok=True)
+    for d in days:
+        write(os.path.join(OUT, d["date"], "index.html"), render_day(template, d, version))
+    write(os.path.join(OUT, "index.html"), render_index(days, version))
+    print(f"built {len(days)} day page(s) + index.html in docs/ (assets v={version})")
+
+
+if __name__ == "__main__":
+    main()
