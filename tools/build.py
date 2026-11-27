@@ -3,23 +3,33 @@
 GitHub Pages serves the docs/ folder (Settings -> Pages -> main /docs).
 Usage: python3 tools/build.py   (run from the repo root)
 """
-import glob, html, json, os
+import glob, html, json, os, shutil
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "docs")
 TPL = open(os.path.join(ROOT, "tools", "day.template.html"), encoding="utf-8").read()
 
 
+def page_title(d):
+    m, dd = d["date"].split("-")[1:]
+    return f"{int(m)}/{int(dd)} {d['title']}｜Daily Vocab"
+
+
 def js_safe(obj):
     return json.dumps(obj, ensure_ascii=False).replace("</", "<\\/")
 
+
+# static assets (favicon etc.) -> docs/
+os.makedirs(OUT, exist_ok=True)
+for f in glob.glob(os.path.join(ROOT, "tools", "static", "*")):
+    shutil.copy(f, OUT)
 
 days = []
 for path in sorted(glob.glob(os.path.join(ROOT, "data", "*.json"))):
     d = json.load(open(path, encoding="utf-8"))
     out_dir = os.path.join(OUT, d["date"])
     os.makedirs(out_dir, exist_ok=True)
-    page = (TPL.replace("__TITLE__", html.escape(f'{d["title"]}｜每日英文單字 {d["date"]}'))
+    page = (TPL.replace("__TITLE__", html.escape(page_title(d)))
                .replace("__DESC__", html.escape("今日單字：" + "、".join(w["word"] for w in d["words"])))
                .replace("__DATA__", js_safe(d)))
     open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8").write(page)
@@ -38,7 +48,9 @@ INDEX = f'''<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>每日英文單字</title>
+<title>Daily Vocab｜每日英文單字</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="description" content="從每日英文新聞學 7000 單以外的單字">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
