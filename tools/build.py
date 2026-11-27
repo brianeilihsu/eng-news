@@ -15,6 +15,7 @@ import shutil
 import sys
 from typing import List
 
+from render import render_day
 from validate import validate_file
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,15 +23,6 @@ OUT = os.path.join(ROOT, "docs")
 STATIC = os.path.join(ROOT, "tools", "static")
 TEMPLATE = os.path.join(ROOT, "tools", "day.template.html")
 ASSET_HASH_LEN = 10
-
-
-def page_title(d: dict) -> str:
-    m, dd = d["date"].split("-")[1:]
-    return f"{int(m)}/{int(dd)} {d['title']}｜Daily Vocab"
-
-
-def js_safe(obj: object) -> str:
-    return json.dumps(obj, ensure_ascii=False).replace("</", "<\\/")
 
 
 def asset_version() -> str:
@@ -58,13 +50,6 @@ def load_lessons(paths: List[str]) -> List[dict]:
         with open(p, encoding="utf-8") as f:
             lessons.append(json.load(f))
     return lessons
-
-
-def render_day(template: str, d: dict, version: str) -> str:
-    return (template.replace("__TITLE__", html.escape(page_title(d)))
-                    .replace("__DESC__", html.escape("今日單字：" + "、".join(w["word"] for w in d["words"])))
-                    .replace("__ASSET_V__", version)
-                    .replace("__DATA__", js_safe(d)))
 
 
 def render_index(days: List[dict], version: str) -> str:

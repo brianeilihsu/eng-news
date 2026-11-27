@@ -23,9 +23,10 @@ tools/
   new_day.py         產生 data/YYYY-MM-DD.json 骨架，裡面的 TODO 待填
   validate.py        檢查 data/*.json（build.py 會自動執行）
   build.py           產生網站：data/*.json → docs/
+  render.py          build 時把單日內容輸出成 HTML（不開 JS 也看得到內容）
   day.template.html  單日頁面 HTML 模板
   static/            原樣複製到 docs/
-    assets/          base.css（共用）、day.css、day.js（單日頁互動）
+    assets/          base.css（共用）、day.css、day.js（只負責互動：發音、彈窗、對答案）
   test_*.py          測試：python3 -m unittest discover -s tools
   DAILY_TASK.md      每日排程的完整指示
 docs/        build 產生的網站（GitHub Pages 從這裡部署）

@@ -1,4 +1,5 @@
-/* Daily page behaviour. Reads the lesson JSON embedded in <script id="data">. */
+/* Daily page behaviour only: content is rendered at build time (tools/render.py).
+   Reads the lesson JSON embedded in <script id="data"> for the popover, read-aloud and quiz. */
 (function(){
   const D = JSON.parse(document.getElementById('data').textContent);
   const $ = id => document.getElementById(id);
@@ -28,37 +29,6 @@
   if(!synth){ $('readAll').style.display='none'; $('stopAll').style.display='none'; }
   $('readAll').onclick = () => speak(D.title + '. ' + D.article.map(p => p.replace(/\{\d+\|([^}]+)\}/g,'$1')).join(' '), 0.95);
   $('stopAll').onclick = () => synth && synth.cancel();
-
-  /* ---------- header & article ---------- */
-  $('meta').textContent = D.date_zh + '｜' + D.topic + '｜改寫自 ' + D.source.outlet;
-  $('title').textContent = D.title;
-  const zh = D.article_zh || [];
-  $('article').innerHTML = D.article.map((p,k) =>
-    '<p>' + esc(p).replace(/\{(\d+)\|([^}]+)\}/g, (m,i,w) =>
-      `<span class="vw" tabindex="0" data-i="${i}">${w}<sup>${i}</sup></span>`) + '</p>' +
-    (zh[k] ? `<details class="tr"><summary>中文翻譯</summary><div class="tr-body">${esc(zh[k])}</div></details>` : '')).join('');
-  $('summary').textContent = D.summary_zh;
-  $('srcline').innerHTML = '原始新聞：' + esc(D.source.outlet) + '〈' + esc(D.source.headline) + '〉' +
-    esc(D.source.author) + '，' + esc(D.source.date) + '<br><a href="' + esc(D.source.url) + '" target="_blank" rel="noopener">' + esc(D.source.url) + '</a>';
-
-  /* ---------- cards ---------- */
-  function mark(sentence, word){
-    const parts = word.split(/\s+/).map(w => w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));
-    const re = new RegExp('\\b(' + parts[0] + '\\w*' + parts.slice(1).map(p => '\\s+' + p).join('') + ')', 'i');
-    return esc(sentence).replace(re, '<b>$1</b>');
-  }
-  $('cards').innerHTML = D.words.map((w,k) => `
-    <div class="card" id="w${k+1}">
-      <div class="word"><span class="n">${k+1}</span><span class="w en">${esc(w.word)}</span>
-        <button class="say" title="發音" aria-label="播放發音" data-say="${esc(w.word)}">🔊</button>
-        <button class="say" title="慢速" aria-label="慢速發音" data-say="${esc(w.word)}" data-rate="0.55">🐢</button>
-        <span class="r">${esc(w.kk)}</span><span class="pos">${esc(w.pos)}</span><span class="m">${esc(w.zh)}</span></div>
-      <div class="row"><span class="k">英文解釋</span><span class="en">${esc(w.def)}</span></div>
-      <div class="row"><span class="k">文章句</span><span class="en">${mark(w.sentence, w.word)}</span></div>
-      <div class="row"><span class="k">常見搭配</span><span class="en">${w.collocations.map(esc).join(' ／ ')}</span></div>
-      <div class="row"><span class="k">真實例句</span><span><span class="en">${mark(w.example, w.word)}</span><button class="say sm" aria-label="播放例句" data-say="${esc(w.example)}">🔊</button><br><span class="src">出處：${esc(w.example_src)}</span></span></div>
-      <div class="row"><span class="k">近義・詞形</span><span class="en">${esc(w.related)}</span></div>
-    </div>`).join('');
 
   /* ---------- popover ---------- */
   const pop = $('pop'); let cur = null, hideT = null;
@@ -101,12 +71,6 @@
   window.addEventListener('resize', hide);
 
   /* ---------- quiz ---------- */
-  const bank = D.words.map((w,k) => ({w:w.word, i:k+1}));
-  const shuffled = bank.slice().sort((a,b) => ((a.i*7+3)%11) - ((b.i*7+3)%11));
-  const opts = '<option value="">— 選 —</option>' + shuffled.map(o => `<option value="${o.i}">${esc(o.w)}</option>`).join('');
-  $('quiz').innerHTML = D.quiz.map((q,k) =>
-    `<li data-a="${q.a}" data-form="${esc(q.form || D.words[q.a-1].word)}">` +
-    esc(q.q).replace('___', `<select aria-label="第 ${k+1} 題">${opts}</select>`) + '<span class="fb"></span></li>').join('');
   function check(reveal){
     let ok = 0;
     $('quiz').querySelectorAll('li').forEach(li => {

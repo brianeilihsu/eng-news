@@ -10,31 +10,138 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/base.css?v=453e47bec5">
-<link rel="stylesheet" href="../assets/day.css?v=453e47bec5">
+<link rel="stylesheet" href="../assets/base.css?v=aced268a44">
+<link rel="stylesheet" href="../assets/day.css?v=aced268a44">
 </head>
 <body>
 <div class="topbar"></div>
 <main class="wrap">
   <div class="nav"><a href="../">← 所有講義</a></div>
   <div class="kicker">每日英文單字 ・ DAILY VOCAB</div>
-  <div class="meta" id="meta"></div>
-  <h1 class="en" id="title"></h1>
+  <div class="meta">2026年11月27日（五）｜科技・資安｜改寫自 NPR</div>
+  <h1 class="en">Hackers Are Turning Up the Heat</h1>
   <div class="tools">
     <button class="btn primary" id="readAll">▶ 朗讀全文</button>
     <button class="btn" id="stopAll">■ 停止</button>
   </div>
   <div class="tip-hint" id="hint">滑過（手機點一下）畫線的單字可看翻譯與解釋，按 🔊 聽發音。</div>
-  <article class="article en" id="article"></article>
-  <div class="summary"><div class="t">這篇在講什麼（中文摘要）</div><div id="summary"></div></div>
-  <div class="src-line" id="srcline"></div>
+  <article class="article en">
+    <p>As the holiday season got under way in the United States, a <span class="vw" tabindex="0" data-i="1">spate<sup>1</sup></span> of high-profile tech outages briefly knocked out email and disrupted flight communications. Officials say the breakdowns were not a coordinated attack, and even a simple software <span class="vw" tabindex="0" data-i="2">glitch<sup>2</sup></span> can cause chaos at the busiest time of year. Still, the episode has revived an uncomfortable question: how easily could someone break the machines that quietly keep everyday life running?</p>
+    <details class="tr"><summary>中文翻譯</summary><div class="tr-body">美國假期購物季剛開始，就接連發生幾起引人注目的科技服務中斷，一度讓電子郵件停擺、航班通訊受到干擾。官方表示這些故障並非協同攻擊，而且就算只是一個簡單的軟體小故障，也可能在一年中最忙碌的時候造成混亂。不過，這件事又讓一個令人不安的問題浮上檯面：那些默默維持日常生活運作的機器，有多容易被人破壞？</div></details>
+    <p>One worrying answer comes from an unlikely place: the freezer. In late August, freezers at the commissary of Fort Irwin, a U.S. Army base in California, began overheating, and at least five other bases reported the same problem. The Pentagon has declined to share details of its investigation, but most experts suspect a cyberattack. In France, refrigeration systems in 500 to 700 supermarkets failed overnight, spoiling millions of euros’ worth of food. Similar incidents followed in early November in Estonia, Sweden and the Netherlands. French officials blamed hackers linked to Iran’s military; Tehran denies involvement, and no individual <span class="vw" tabindex="0" data-i="3">perpetrator<sup>3</sup></span> has been publicly named.</p>
+    <details class="tr"><summary>中文翻譯</summary><div class="tr-body">其中一個令人擔憂的答案，來自一個意想不到的地方：冷凍庫。8 月底，美國陸軍位於加州的歐文堡基地，福利社的冷凍庫開始過熱，另外至少五個基地也回報了同樣的問題。五角大廈拒絕透露調查細節，但多數專家懷疑是網路攻擊。在法國，500 到 700 家超市的冷藏系統一夜之間故障，價值數百萬歐元的食品因此報廢。11 月初，愛沙尼亞、瑞典和荷蘭也接連發生類似事件。法國官員指稱是與伊朗軍方有關的駭客所為；德黑蘭否認涉入，目前也還沒有公開指名任何個別的加害者。</div></details>
+    <p>These systems belong to what engineers call operational technology, or OT — the hardware that controls physical processes such as cooling and pumping. Earlier this year, Iranian hackers also disrupted water treatment facilities across the U.S. Security researchers say many such devices sit on the open internet with <span class="vw" tabindex="0" data-i="4">lax<sup>4</sup></span> protection: known flaws left unpatched and basic safeguards missing. One researcher called internet-exposed devices the “soft belly” of security. In an earlier case at an Israeli food company, attackers who <span class="vw" tabindex="0" data-i="5">tampered with<sup>5</sup></span> freezer controls destroyed the compressors while office printers spat out propaganda. A responder believes AI let them test settings far faster than any human could.</p>
+    <details class="tr"><summary>中文翻譯</summary><div class="tr-body">這些系統屬於工程師所說的「營運技術」（OT），也就是控制冷卻、抽水等實體流程的硬體設備。今年稍早，伊朗駭客也曾干擾全美各地的水處理設施。資安研究人員說，許多這類設備直接暴露在公開網路上，防護鬆散：已知漏洞沒有修補，基本防護措施也付之闕如。一位研究人員把暴露在網路上的設備形容為資安的「軟肋」。在先前一起以色列食品公司的案例中，攻擊者竄改了冷凍庫的控制設定，弄壞了壓縮機，同時讓辦公室的印表機不斷吐出宣傳文宣。一位事件應變人員認為，AI 讓他們測試各種設定的速度遠遠快過任何人類。</div></details>
+    <p>Experts warn that the next <span class="vw" tabindex="0" data-i="6">brazen<sup>6</sup></span> attack could wreak <span class="vw" tabindex="0" data-i="7">havoc<sup>7</sup></span> on far more than frozen peas. Vaccines, blood banks, ports and power plants all depend on similar equipment. Industry groups are urging Washington to set basic security requirements so that private operators <span class="vw" tabindex="0" data-i="8">shore up<sup>8</sup></span> their defenses before a bad actor succeeds. Many argue that privately owned critical infrastructure now needs real regulation. For families at Fort Irwin, the lesson is already clear: be prepared for anything.</p>
+    <details class="tr"><summary>中文翻譯</summary><div class="tr-body">專家警告，下一次明目張膽的攻擊，造成的破壞可能遠不只是冷凍豌豆。疫苗、血庫、港口和發電廠都仰賴類似的設備。產業團體正敦促華府訂定基本的資安要求，讓民間業者在有心人士得逞之前，先加強自身的防禦。許多人認為，民間持有的關鍵基礎設施如今需要真正的法規管理。對歐文堡的家庭來說，教訓已經很清楚：凡事都要做好準備。</div></details>
+  </article>
+  <div class="summary"><div class="t">這篇在講什麼（中文摘要）</div><div>感恩節前美國接連發生大型科技服務中斷，再度引發「日常基礎設施有多脆弱」的討論。從美軍基地到法國等歐洲國家的超市，冷凍設備接連被駭、溫度失控；法國指向與伊朗軍方有關的駭客，伊朗否認。專家指出，大量「營運技術（OT）」設備直接暴露在網路上、防護鬆散，AI 又讓攻擊更快，因此呼籲政府訂定基本資安要求。</div></div>
+  <div class="src-line">原始新聞：NPR〈High-profile tech outages show how vulnerable our tech is — even fridges〉Jenna McLaughlin，2026-11-26<br><a href="https://www.npr.org/2026/11/26/nx-s1-6001875/high-profile-tech-outages-show-how-vulnerable-our-tech-is-even-fridges" target="_blank" rel="noopener">https://www.npr.org/2026/11/26/nx-s1-6001875/high-profile-tech-outages-show-how-vulnerable-our-tech-is-even-fridges</a></div>
 
   <h2><span class="no">01</span>今日單字</h2>
-  <div id="cards"></div>
+  <div>
+    <div class="card" id="w1">
+      <div class="word"><span class="n">1</span><span class="w en">spate</span>
+        <button class="say" title="發音" aria-label="播放發音" data-say="spate">🔊</button>
+        <button class="say" title="慢速" aria-label="慢速發音" data-say="spate" data-rate="0.55">🐢</button>
+        <span class="r">[spet]</span><span class="pos">n.</span><span class="m">（壞事）一連串、接二連三</span></div>
+      <div class="row"><span class="k">英文解釋</span><span class="en">a large number of similar things, usually unpleasant, happening in a short time</span></div>
+      <div class="row"><span class="k">文章句</span><span class="en">…a <b>spate</b> of high-profile tech outages briefly knocked out email and disrupted flight communications.</span></div>
+      <div class="row"><span class="k">常見搭配</span><span class="en">a spate of attacks ／ a recent spate of ／ a sudden spate</span></div>
+      <div class="row"><span class="k">真實例句</span><span><span class="en">Major Insurer Allstate Hit by 3-Day Outage Amid <b>Spate</b> of US Service Issues</span><button class="say sm" aria-label="播放例句" data-say="Major Insurer Allstate Hit by 3-Day Outage Amid Spate of US Service Issues">🔊</button><br><span class="src">出處：Newsweek（標題）・2026-11-25</span></span></div>
+      <div class="row"><span class="k">近義・詞形</span><span class="en">≈ series ／ wave ／ string（多用 a spate of + 複數名詞）</span></div>
+    </div>
+    <div class="card" id="w2">
+      <div class="word"><span class="n">2</span><span class="w en">glitch</span>
+        <button class="say" title="發音" aria-label="播放發音" data-say="glitch">🔊</button>
+        <button class="say" title="慢速" aria-label="慢速發音" data-say="glitch" data-rate="0.55">🐢</button>
+        <span class="r">[glɪtʃ]</span><span class="pos">n.</span><span class="m">（系統）小故障、小毛病</span></div>
+      <div class="row"><span class="k">英文解釋</span><span class="en">a small fault that stops something from working properly</span></div>
+      <div class="row"><span class="k">文章句</span><span class="en">…even a simple software <b>glitch</b> can cause chaos at the busiest time of year.</span></div>
+      <div class="row"><span class="k">常見搭配</span><span class="en">a technical glitch ／ a software glitch ／ fix a glitch</span></div>
+      <div class="row"><span class="k">真實例句</span><span><span class="en">Airlines work to fix software <b>glitch</b> on A320 aircraft and some flights are disrupted</span><button class="say sm" aria-label="播放例句" data-say="Airlines work to fix software glitch on A320 aircraft and some flights are disrupted">🔊</button><br><span class="src">出處：AP（ABC7 News 轉載，標題）・2025-11-29</span></span></div>
+      <div class="row"><span class="k">近義・詞形</span><span class="en">≈ bug ／ malfunction ／ adj. glitchy 常出毛病的</span></div>
+    </div>
+    <div class="card" id="w3">
+      <div class="word"><span class="n">3</span><span class="w en">perpetrator</span>
+        <button class="say" title="發音" aria-label="播放發音" data-say="perpetrator">🔊</button>
+        <button class="say" title="慢速" aria-label="慢速發音" data-say="perpetrator" data-rate="0.55">🐢</button>
+        <span class="r">[ˋpɝpəˏtretɚ]</span><span class="pos">n.</span><span class="m">犯案者、行兇者</span></div>
+      <div class="row"><span class="k">英文解釋</span><span class="en">a person who commits a crime or does something harmful</span></div>
+      <div class="row"><span class="k">文章句</span><span class="en">…and no individual <b>perpetrator</b> has been publicly named.</span></div>
+      <div class="row"><span class="k">常見搭配</span><span class="en">identify the perpetrator ／ bring perpetrators to justice ／ alleged perpetrator</span></div>
+      <div class="row"><span class="k">真實例句</span><span><span class="en">The investigation remains ongoing and no <b>perpetrators</b> have been publicly identified.</span><button class="say sm" aria-label="播放例句" data-say="The investigation remains ongoing and no perpetrators have been publicly identified.">🔊</button><br><span class="src">出處：INCIBE-CERT（西班牙國家資安中心）・2026-10-20</span></span></div>
+      <div class="row"><span class="k">近義・詞形</span><span class="en">≈ culprit ／ v. perpetrate 犯（罪） ／ n. perpetration</span></div>
+    </div>
+    <div class="card" id="w4">
+      <div class="word"><span class="n">4</span><span class="w en">lax</span>
+        <button class="say" title="發音" aria-label="播放發音" data-say="lax">🔊</button>
+        <button class="say" title="慢速" aria-label="慢速發音" data-say="lax" data-rate="0.55">🐢</button>
+        <span class="r">[læks]</span><span class="pos">adj.</span><span class="m">鬆懈的、不嚴格的</span></div>
+      <div class="row"><span class="k">英文解釋</span><span class="en">not strict, careful or firm enough</span></div>
+      <div class="row"><span class="k">文章句</span><span class="en">…many such devices sit on the open internet with <b>lax</b> protection…</span></div>
+      <div class="row"><span class="k">常見搭配</span><span class="en">lax security ／ lax enforcement ／ lax rules</span></div>
+      <div class="row"><span class="k">真實例句</span><span><span class="en"><b>Lax</b> Security Exposes Smart-Irrigation Systems to Attack Across the Globe</span><button class="say sm" aria-label="播放例句" data-say="Lax Security Exposes Smart-Irrigation Systems to Attack Across the Globe">🔊</button><br><span class="src">出處：Threatpost（標題）・2020-10-27</span></span></div>
+      <div class="row"><span class="k">近義・詞形</span><span class="en">≈ slack ／ careless ↔ strict ／ n. laxity</span></div>
+    </div>
+    <div class="card" id="w5">
+      <div class="word"><span class="n">5</span><span class="w en">tamper with</span>
+        <button class="say" title="發音" aria-label="播放發音" data-say="tamper with">🔊</button>
+        <button class="say" title="慢速" aria-label="慢速發音" data-say="tamper with" data-rate="0.55">🐢</button>
+        <span class="r">[ˋtæmpɚ wɪð]</span><span class="pos">phr. v.</span><span class="m">擅自更動、竄改</span></div>
+      <div class="row"><span class="k">英文解釋</span><span class="en">to touch or change something without permission, usually to damage it</span></div>
+      <div class="row"><span class="k">文章句</span><span class="en">…attackers who <b>tampered with</b> freezer controls destroyed the compressors…</span></div>
+      <div class="row"><span class="k">常見搭配</span><span class="en">tamper with evidence ／ tamper with a device ／ tamper-proof packaging</span></div>
+      <div class="row"><span class="k">真實例句</span><span><span class="en">Attackers <b>Tampered with</b> AOMEI Backupper's Update Servers for Minutes to Deliver a Backdoor</span><button class="say sm" aria-label="播放例句" data-say="Attackers Tampered with AOMEI Backupper's Update Servers for Minutes to Deliver a Backdoor">🔊</button><br><span class="src">出處：The Hacker News（標題）・2026-10-16</span></span></div>
+      <div class="row"><span class="k">近義・詞形</span><span class="en">≈ interfere with ／ meddle with ／ n. tampering ／ adj. tamper-resistant</span></div>
+    </div>
+    <div class="card" id="w6">
+      <div class="word"><span class="n">6</span><span class="w en">brazen</span>
+        <button class="say" title="發音" aria-label="播放發音" data-say="brazen">🔊</button>
+        <button class="say" title="慢速" aria-label="慢速發音" data-say="brazen" data-rate="0.55">🐢</button>
+        <span class="r">[ˋbrezn̩]</span><span class="pos">adj.</span><span class="m">明目張膽的、肆無忌憚的</span></div>
+      <div class="row"><span class="k">英文解釋</span><span class="en">done openly and boldly, without any shame</span></div>
+      <div class="row"><span class="k">文章句</span><span class="en">Experts warn that the next <b>brazen</b> attack could wreak havoc on far more than frozen peas.</span></div>
+      <div class="row"><span class="k">常見搭配</span><span class="en">a brazen attack ／ a brazen heist ／ a brazen lie</span></div>
+      <div class="row"><span class="k">真實例句</span><span><span class="en">Suspects Charged in <b>Brazen</b> Train Heist Ring That Netted $22M in Cargo</span><button class="say sm" aria-label="播放例句" data-say="Suspects Charged in Brazen Train Heist Ring That Netted $22M in Cargo">🔊</button><br><span class="src">出處：AP（Manufacturing.net 轉載，標題）・2026-11-19</span></span></div>
+      <div class="row"><span class="k">近義・詞形</span><span class="en">≈ bold ／ shameless ／ adv. brazenly</span></div>
+    </div>
+    <div class="card" id="w7">
+      <div class="word"><span class="n">7</span><span class="w en">havoc</span>
+        <button class="say" title="發音" aria-label="播放發音" data-say="havoc">🔊</button>
+        <button class="say" title="慢速" aria-label="慢速發音" data-say="havoc" data-rate="0.55">🐢</button>
+        <span class="r">[ˋhævək]</span><span class="pos">n.</span><span class="m">大混亂、嚴重破壞</span></div>
+      <div class="row"><span class="k">英文解釋</span><span class="en">great confusion, damage or disorder</span></div>
+      <div class="row"><span class="k">文章句</span><span class="en">…the next brazen attack could wreak <b>havoc</b> on far more than frozen peas.</span></div>
+      <div class="row"><span class="k">常見搭配</span><span class="en">wreak havoc on ／ cause havoc ／ play havoc with</span></div>
+      <div class="row"><span class="k">真實例句</span><span><span class="en">AI Hackers Are Dumb And They Can Wreak <b>Havoc</b></span><button class="say sm" aria-label="播放例句" data-say="AI Hackers Are Dumb And They Can Wreak Havoc">🔊</button><br><span class="src">出處：Cybersecurity Ventures（標題）・2026-09-17</span></span></div>
+      <div class="row"><span class="k">近義・詞形</span><span class="en">≈ chaos ／ devastation ／ mayhem（不可數名詞）</span></div>
+    </div>
+    <div class="card" id="w8">
+      <div class="word"><span class="n">8</span><span class="w en">shore up</span>
+        <button class="say" title="發音" aria-label="播放發音" data-say="shore up">🔊</button>
+        <button class="say" title="慢速" aria-label="慢速發音" data-say="shore up" data-rate="0.55">🐢</button>
+        <span class="r">[ʃor ʌp]</span><span class="pos">phr. v.</span><span class="m">加強、鞏固</span></div>
+      <div class="row"><span class="k">英文解釋</span><span class="en">to strengthen or support something that is weak or likely to fail</span></div>
+      <div class="row"><span class="k">文章句</span><span class="en">…so that private operators <b>shore up</b> their defenses before a bad actor succeeds.</span></div>
+      <div class="row"><span class="k">常見搭配</span><span class="en">shore up defenses ／ shore up support ／ shore up the economy</span></div>
+      <div class="row"><span class="k">真實例句</span><span><span class="en">Federal Government Moves to <b>Shore Up</b> Critical National Security</span><button class="say sm" aria-label="播放例句" data-say="Federal Government Moves to Shore Up Critical National Security">🔊</button><br><span class="src">出處：ISMS.online（標題）・2024-07-23</span></span></div>
+      <div class="row"><span class="k">近義・詞形</span><span class="en">≈ bolster ／ reinforce ／ strengthen</span></div>
+    </div>
+  </div>
 
   <h2><span class="no">02</span>小測驗：填空</h2>
   <div class="quiz">
-    <ol class="en" id="quiz"></ol>
+    <ol class="en" id="quiz">
+      <li data-a="1" data-form="spate">After a <select aria-label="第 1 題"><option value="">— 選 —</option><option value="6">brazen</option><option value="3">perpetrator</option><option value="8">shore up</option><option value="5">tamper with</option><option value="2">glitch</option><option value="7">havoc</option><option value="4">lax</option><option value="1">spate</option></select> of phishing emails, the company made two-factor login mandatory.<span class="fb"></span></li>
+      <li data-a="2" data-form="glitch">A small <select aria-label="第 2 題"><option value="">— 選 —</option><option value="6">brazen</option><option value="3">perpetrator</option><option value="8">shore up</option><option value="5">tamper with</option><option value="2">glitch</option><option value="7">havoc</option><option value="4">lax</option><option value="1">spate</option></select> in the payment app charged some customers twice.<span class="fb"></span></li>
+      <li data-a="3" data-form="perpetrator">Police traced the stolen data to a server but still could not name the <select aria-label="第 3 題"><option value="">— 選 —</option><option value="6">brazen</option><option value="3">perpetrator</option><option value="8">shore up</option><option value="5">tamper with</option><option value="2">glitch</option><option value="7">havoc</option><option value="4">lax</option><option value="1">spate</option></select>.<span class="fb"></span></li>
+      <li data-a="4" data-form="lax">Critics say <select aria-label="第 4 題"><option value="">— 選 —</option><option value="6">brazen</option><option value="3">perpetrator</option><option value="8">shore up</option><option value="5">tamper with</option><option value="2">glitch</option><option value="7">havoc</option><option value="4">lax</option><option value="1">spate</option></select> password rules made the breach almost inevitable.<span class="fb"></span></li>
+      <li data-a="5" data-form="tampered with">Someone had <select aria-label="第 5 題"><option value="">— 選 —</option><option value="6">brazen</option><option value="3">perpetrator</option><option value="8">shore up</option><option value="5">tamper with</option><option value="2">glitch</option><option value="7">havoc</option><option value="4">lax</option><option value="1">spate</option></select> the smart meter, so its readings were far too low.<span class="fb"></span></li>
+      <li data-a="6" data-form="brazen">In a <select aria-label="第 6 題"><option value="">— 選 —</option><option value="6">brazen</option><option value="3">perpetrator</option><option value="8">shore up</option><option value="5">tamper with</option><option value="2">glitch</option><option value="7">havoc</option><option value="4">lax</option><option value="1">spate</option></select> move, the thieves posted videos of the robbery online.<span class="fb"></span></li>
+      <li data-a="7" data-form="havoc">One faulty update can wreak <select aria-label="第 7 題"><option value="">— 選 —</option><option value="6">brazen</option><option value="3">perpetrator</option><option value="8">shore up</option><option value="5">tamper with</option><option value="2">glitch</option><option value="7">havoc</option><option value="4">lax</option><option value="1">spate</option></select> on millions of computers worldwide.<span class="fb"></span></li>
+      <li data-a="8" data-form="shore up">The hospital hired extra engineers to <select aria-label="第 8 題"><option value="">— 選 —</option><option value="6">brazen</option><option value="3">perpetrator</option><option value="8">shore up</option><option value="5">tamper with</option><option value="2">glitch</option><option value="7">havoc</option><option value="4">lax</option><option value="1">spate</option></select> its aging network before winter.<span class="fb"></span></li>
+    </ol>
     <button class="btn primary" id="check">對答案</button>
     <button class="btn" id="reveal">顯示答案</button>
     <span class="score" id="score"></span>
@@ -44,6 +151,6 @@
 <div class="pop" id="pop" role="dialog"></div>
 
 <script type="application/json" id="data">{"date": "2026-11-27", "date_zh": "2026年11月27日（五）", "topic": "科技・資安", "slug": "fridge-cyberattacks", "title": "Hackers Are Turning Up the Heat", "source": {"outlet": "NPR", "headline": "High-profile tech outages show how vulnerable our tech is — even fridges", "author": "Jenna McLaughlin", "date": "2026-11-26", "url": "https://www.npr.org/2026/11/26/nx-s1-6001875/high-profile-tech-outages-show-how-vulnerable-our-tech-is-even-fridges"}, "article": ["As the holiday season got under way in the United States, a {1|spate} of high-profile tech outages briefly knocked out email and disrupted flight communications. Officials say the breakdowns were not a coordinated attack, and even a simple software {2|glitch} can cause chaos at the busiest time of year. Still, the episode has revived an uncomfortable question: how easily could someone break the machines that quietly keep everyday life running?", "One worrying answer comes from an unlikely place: the freezer. In late August, freezers at the commissary of Fort Irwin, a U.S. Army base in California, began overheating, and at least five other bases reported the same problem. The Pentagon has declined to share details of its investigation, but most experts suspect a cyberattack. In France, refrigeration systems in 500 to 700 supermarkets failed overnight, spoiling millions of euros’ worth of food. Similar incidents followed in early November in Estonia, Sweden and the Netherlands. French officials blamed hackers linked to Iran’s military; Tehran denies involvement, and no individual {3|perpetrator} has been publicly named.", "These systems belong to what engineers call operational technology, or OT — the hardware that controls physical processes such as cooling and pumping. Earlier this year, Iranian hackers also disrupted water treatment facilities across the U.S. Security researchers say many such devices sit on the open internet with {4|lax} protection: known flaws left unpatched and basic safeguards missing. One researcher called internet-exposed devices the “soft belly” of security. In an earlier case at an Israeli food company, attackers who {5|tampered with} freezer controls destroyed the compressors while office printers spat out propaganda. A responder believes AI let them test settings far faster than any human could.", "Experts warn that the next {6|brazen} attack could wreak {7|havoc} on far more than frozen peas. Vaccines, blood banks, ports and power plants all depend on similar equipment. Industry groups are urging Washington to set basic security requirements so that private operators {8|shore up} their defenses before a bad actor succeeds. Many argue that privately owned critical infrastructure now needs real regulation. For families at Fort Irwin, the lesson is already clear: be prepared for anything."], "article_zh": ["美國假期購物季剛開始，就接連發生幾起引人注目的科技服務中斷，一度讓電子郵件停擺、航班通訊受到干擾。官方表示這些故障並非協同攻擊，而且就算只是一個簡單的軟體小故障，也可能在一年中最忙碌的時候造成混亂。不過，這件事又讓一個令人不安的問題浮上檯面：那些默默維持日常生活運作的機器，有多容易被人破壞？", "其中一個令人擔憂的答案，來自一個意想不到的地方：冷凍庫。8 月底，美國陸軍位於加州的歐文堡基地，福利社的冷凍庫開始過熱，另外至少五個基地也回報了同樣的問題。五角大廈拒絕透露調查細節，但多數專家懷疑是網路攻擊。在法國，500 到 700 家超市的冷藏系統一夜之間故障，價值數百萬歐元的食品因此報廢。11 月初，愛沙尼亞、瑞典和荷蘭也接連發生類似事件。法國官員指稱是與伊朗軍方有關的駭客所為；德黑蘭否認涉入，目前也還沒有公開指名任何個別的加害者。", "這些系統屬於工程師所說的「營運技術」（OT），也就是控制冷卻、抽水等實體流程的硬體設備。今年稍早，伊朗駭客也曾干擾全美各地的水處理設施。資安研究人員說，許多這類設備直接暴露在公開網路上，防護鬆散：已知漏洞沒有修補，基本防護措施也付之闕如。一位研究人員把暴露在網路上的設備形容為資安的「軟肋」。在先前一起以色列食品公司的案例中，攻擊者竄改了冷凍庫的控制設定，弄壞了壓縮機，同時讓辦公室的印表機不斷吐出宣傳文宣。一位事件應變人員認為，AI 讓他們測試各種設定的速度遠遠快過任何人類。", "專家警告，下一次明目張膽的攻擊，造成的破壞可能遠不只是冷凍豌豆。疫苗、血庫、港口和發電廠都仰賴類似的設備。產業團體正敦促華府訂定基本的資安要求，讓民間業者在有心人士得逞之前，先加強自身的防禦。許多人認為，民間持有的關鍵基礎設施如今需要真正的法規管理。對歐文堡的家庭來說，教訓已經很清楚：凡事都要做好準備。"], "summary_zh": "感恩節前美國接連發生大型科技服務中斷，再度引發「日常基礎設施有多脆弱」的討論。從美軍基地到法國等歐洲國家的超市，冷凍設備接連被駭、溫度失控；法國指向與伊朗軍方有關的駭客，伊朗否認。專家指出，大量「營運技術（OT）」設備直接暴露在網路上、防護鬆散，AI 又讓攻擊更快，因此呼籲政府訂定基本資安要求。", "words": [{"word": "spate", "kk": "[spet]", "pos": "n.", "zh": "（壞事）一連串、接二連三", "def": "a large number of similar things, usually unpleasant, happening in a short time", "sentence": "…a spate of high-profile tech outages briefly knocked out email and disrupted flight communications.", "collocations": ["a spate of attacks", "a recent spate of", "a sudden spate"], "example": "Major Insurer Allstate Hit by 3-Day Outage Amid Spate of US Service Issues", "example_src": "Newsweek（標題）・2026-11-25", "related": "≈ series ／ wave ／ string（多用 a spate of + 複數名詞）"}, {"word": "glitch", "kk": "[glɪtʃ]", "pos": "n.", "zh": "（系統）小故障、小毛病", "def": "a small fault that stops something from working properly", "sentence": "…even a simple software glitch can cause chaos at the busiest time of year.", "collocations": ["a technical glitch", "a software glitch", "fix a glitch"], "example": "Airlines work to fix software glitch on A320 aircraft and some flights are disrupted", "example_src": "AP（ABC7 News 轉載，標題）・2025-11-29", "related": "≈ bug ／ malfunction ／ adj. glitchy 常出毛病的"}, {"word": "perpetrator", "kk": "[ˋpɝpəˏtretɚ]", "pos": "n.", "zh": "犯案者、行兇者", "def": "a person who commits a crime or does something harmful", "sentence": "…and no individual perpetrator has been publicly named.", "collocations": ["identify the perpetrator", "bring perpetrators to justice", "alleged perpetrator"], "example": "The investigation remains ongoing and no perpetrators have been publicly identified.", "example_src": "INCIBE-CERT（西班牙國家資安中心）・2026-10-20", "related": "≈ culprit ／ v. perpetrate 犯（罪） ／ n. perpetration"}, {"word": "lax", "kk": "[læks]", "pos": "adj.", "zh": "鬆懈的、不嚴格的", "def": "not strict, careful or firm enough", "sentence": "…many such devices sit on the open internet with lax protection…", "collocations": ["lax security", "lax enforcement", "lax rules"], "example": "Lax Security Exposes Smart-Irrigation Systems to Attack Across the Globe", "example_src": "Threatpost（標題）・2020-10-27", "related": "≈ slack ／ careless ↔ strict ／ n. laxity"}, {"word": "tamper with", "kk": "[ˋtæmpɚ wɪð]", "pos": "phr. v.", "zh": "擅自更動、竄改", "def": "to touch or change something without permission, usually to damage it", "sentence": "…attackers who tampered with freezer controls destroyed the compressors…", "collocations": ["tamper with evidence", "tamper with a device", "tamper-proof packaging"], "example": "Attackers Tampered with AOMEI Backupper's Update Servers for Minutes to Deliver a Backdoor", "example_src": "The Hacker News（標題）・2026-10-16", "related": "≈ interfere with ／ meddle with ／ n. tampering ／ adj. tamper-resistant"}, {"word": "brazen", "kk": "[ˋbrezn̩]", "pos": "adj.", "zh": "明目張膽的、肆無忌憚的", "def": "done openly and boldly, without any shame", "sentence": "Experts warn that the next brazen attack could wreak havoc on far more than frozen peas.", "collocations": ["a brazen attack", "a brazen heist", "a brazen lie"], "example": "Suspects Charged in Brazen Train Heist Ring That Netted $22M in Cargo", "example_src": "AP（Manufacturing.net 轉載，標題）・2026-11-19", "related": "≈ bold ／ shameless ／ adv. brazenly"}, {"word": "havoc", "kk": "[ˋhævək]", "pos": "n.", "zh": "大混亂、嚴重破壞", "def": "great confusion, damage or disorder", "sentence": "…the next brazen attack could wreak havoc on far more than frozen peas.", "collocations": ["wreak havoc on", "cause havoc", "play havoc with"], "example": "AI Hackers Are Dumb And They Can Wreak Havoc", "example_src": "Cybersecurity Ventures（標題）・2026-09-17", "related": "≈ chaos ／ devastation ／ mayhem（不可數名詞）"}, {"word": "shore up", "kk": "[ʃor ʌp]", "pos": "phr. v.", "zh": "加強、鞏固", "def": "to strengthen or support something that is weak or likely to fail", "sentence": "…so that private operators shore up their defenses before a bad actor succeeds.", "collocations": ["shore up defenses", "shore up support", "shore up the economy"], "example": "Federal Government Moves to Shore Up Critical National Security", "example_src": "ISMS.online（標題）・2024-07-23", "related": "≈ bolster ／ reinforce ／ strengthen"}], "quiz": [{"q": "After a ___ of phishing emails, the company made two-factor login mandatory.", "a": 1}, {"q": "A small ___ in the payment app charged some customers twice.", "a": 2}, {"q": "Police traced the stolen data to a server but still could not name the ___.", "a": 3}, {"q": "Critics say ___ password rules made the breach almost inevitable.", "a": 4}, {"q": "Someone had ___ the smart meter, so its readings were far too low.", "a": 5, "form": "tampered with"}, {"q": "In a ___ move, the thieves posted videos of the robbery online.", "a": 6}, {"q": "One faulty update can wreak ___ on millions of computers worldwide.", "a": 7}, {"q": "The hospital hired extra engineers to ___ its aging network before winter.", "a": 8}]}</script>
-<script src="../assets/day.js?v=453e47bec5"></script>
+<script src="../assets/day.js?v=aced268a44"></script>
 </body>
 </html>

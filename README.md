@@ -23,9 +23,10 @@ tools/
   new_day.py         Creates a skeleton data/YYYY-MM-DD.json full of TODOs to fill in
   validate.py        Checks data/*.json (run automatically by build.py)
   build.py           Builds the site: data/*.json → docs/
+  render.py          Renders a day's content to HTML at build time (pages work without JS)
   day.template.html  HTML template for a daily page
   static/            Copied into docs/ as-is
-    assets/          base.css (shared), day.css, day.js (daily page behaviour)
+    assets/          base.css (shared), day.css, day.js (interaction only: speech, popover, quiz)
   test_*.py          Tests: python3 -m unittest discover -s tools
   DAILY_TASK.md      Full instructions for the daily scheduled task
 docs/        Generated site (served by GitHub Pages)
