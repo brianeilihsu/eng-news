@@ -61,7 +61,7 @@ To add a day, follow the format of an existing JSON file.
 
 ## Daily updates
 
-Every day at 08:13 Taipei time, a Claude scheduled task follows [`tools/DAILY_TASK.md`](tools/DAILY_TASK.md):
+Every day at 09:00 Taipei time, a Claude scheduled task follows [`tools/DAILY_TASK.md`](tools/DAILY_TASK.md):
 
 1. Pick a story from the last 24 hours in a major English outlet (topic rotates by weekday)
 2. Rewrite it as a 350–420 word article and choose 8 words beyond the 7,000-word list

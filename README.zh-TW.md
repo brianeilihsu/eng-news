@@ -61,7 +61,7 @@ python3 -m http.server -d docs 8000
 
 ## 每日自動更新
 
-每天台北時間 08:13，Claude 的排程會照 [`tools/DAILY_TASK.md`](tools/DAILY_TASK.md) 執行：
+每天台北時間 09:00，Claude 的排程會照 [`tools/DAILY_TASK.md`](tools/DAILY_TASK.md) 執行：
 
 1. 從主流英文媒體挑一則最近 24 小時的新聞（主題依星期輪替）
 2. 改寫成 350–420 字的文章，選 8 個 7000 單以外的單字
