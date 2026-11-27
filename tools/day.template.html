@@ -30,6 +30,14 @@
   .tip-hint{font-size:12.5px;color:var(--mute);margin-bottom:12px}
   .article{font-size:17.5px;line-height:1.85}
   .article p{margin-bottom:14px}
+  .article p:has(+ .tr){margin-bottom:6px}
+  .tr{margin:0 0 18px;font-family:"Noto Sans TC",sans-serif}
+  .tr summary{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--mute);cursor:pointer;list-style:none;user-select:none;padding:2px 10px;border:1px solid var(--line);border-radius:999px}
+  .tr summary::-webkit-details-marker{display:none}
+  .tr summary::after{content:"▾";font-size:11px;transition:transform .15s}
+  .tr[open] summary::after{transform:rotate(180deg)}
+  .tr summary:hover{color:var(--main);border-color:var(--main)}
+  .tr-body{margin-top:8px;padding:10px 14px;background:var(--soft);border-left:4px solid var(--line);font-size:15px;line-height:1.8;color:var(--ink)}
   .vw{font-weight:700;background:linear-gradient(transparent 55%,var(--hl) 55%);cursor:pointer;border-radius:2px;white-space:nowrap}
   .vw:hover,.vw.on{background:linear-gradient(transparent 0,var(--hl) 0)}
   .vw sup{font-size:10px;color:var(--accent);font-family:"Noto Sans TC",sans-serif;margin-left:1px}
@@ -141,9 +149,11 @@
   document.title = D.title + '｜每日英文單字 ' + D.date;
   $('meta').textContent = D.date_zh + '｜' + D.topic + '｜改寫自 ' + D.source.outlet;
   $('title').textContent = D.title;
-  $('article').innerHTML = D.article.map(p =>
+  const zh = D.article_zh || [];
+  $('article').innerHTML = D.article.map((p,k) =>
     '<p>' + esc(p).replace(/\{(\d+)\|([^}]+)\}/g, (m,i,w) =>
-      `<span class="vw" tabindex="0" data-i="${i}">${w}<sup>${i}</sup></span>`) + '</p>').join('');
+      `<span class="vw" tabindex="0" data-i="${i}">${w}<sup>${i}</sup></span>`) + '</p>' +
+    (zh[k] ? `<details class="tr"><summary>中文翻譯</summary><div class="tr-body">${esc(zh[k])}</div></details>` : '')).join('');
   $('summary').textContent = D.summary_zh;
   $('srcline').innerHTML = '原始新聞：' + esc(D.source.outlet) + '〈' + esc(D.source.headline) + '〉' +
     esc(D.source.author) + '，' + esc(D.source.date) + '<br><a href="' + esc(D.source.url) + '" target="_blank" rel="noopener">' + esc(D.source.url) + '</a>';

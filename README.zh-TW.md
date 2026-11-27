@@ -12,6 +12,7 @@
 - 文章中的目標單字可以滑過或點擊，跳出中文意思與說明
 - 8 張單字卡：KK 音標、詞性、中文、英文解釋、文章句、常見搭配、真實例句（附出處）、近義詞／詞形變化
 - 發音：單字與整篇文章朗讀，使用瀏覽器內建的 Web Speech API（`speechSynthesis`），不需音檔或 API key，聲音品質依裝置而定
+- 每段下方可展開的中文翻譯
 - 8 題填空小測驗
 
 ## 專案結構
@@ -53,6 +54,7 @@ python3 -m http.server -d docs 8000
 | `title` | 文章標題 |
 | `source` | 原始新聞（媒體、日期、網址） |
 | `article` | 文章段落陣列；目標單字用 `{編號\|單字原文}` 標記，例如 `{5\|tampered with}` |
+| `article_zh` | 每段的中文翻譯，順序和數量與 `article` 一致；頁面上顯示為每段下方可展開的「中文翻譯」 |
 | `summary_zh` | 中文摘要 |
 | `words` | 8 個單字：`word`, `kk`, `pos`, `zh`, `def`, `sentence`, `collocations`, `example`, `example_src`, `related` |
 | `quiz` | 8 題填空：`q`（空格寫 `___`）、`a`（單字編號）、`form`（答案形態與原形不同時填實際形態） |

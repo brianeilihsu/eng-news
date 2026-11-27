@@ -17,6 +17,12 @@
     "These systems belong to what engineers call operational technology, or OT — the hardware that controls physical processes such as cooling and pumping. Earlier this year, Iranian hackers also disrupted water treatment facilities across the U.S. Security researchers say many such devices sit on the open internet with {4|lax} protection: known flaws left unpatched and basic safeguards missing. One researcher called internet-exposed devices the “soft belly” of security. In an earlier case at an Israeli food company, attackers who {5|tampered with} freezer controls destroyed the compressors while office printers spat out propaganda. A responder believes AI let them test settings far faster than any human could.",
     "Experts warn that the next {6|brazen} attack could wreak {7|havoc} on far more than frozen peas. Vaccines, blood banks, ports and power plants all depend on similar equipment. Industry groups are urging Washington to set basic security requirements so that private operators {8|shore up} their defenses before a bad actor succeeds. Many argue that privately owned critical infrastructure now needs real regulation. For families at Fort Irwin, the lesson is already clear: be prepared for anything."
   ],
+  "article_zh": [
+    "美國假期購物季剛開始，就接連發生幾起引人注目的科技服務中斷，一度讓電子郵件停擺、航班通訊受到干擾。官方表示這些故障並非協同攻擊，而且就算只是一個簡單的軟體小故障，也可能在一年中最忙碌的時候造成混亂。不過，這件事又讓一個令人不安的問題浮上檯面：那些默默維持日常生活運作的機器，有多容易被人破壞？",
+    "其中一個令人擔憂的答案，來自一個意想不到的地方：冷凍庫。8 月底，美國陸軍位於加州的歐文堡基地，福利社的冷凍庫開始過熱，另外至少五個基地也回報了同樣的問題。五角大廈拒絕透露調查細節，但多數專家懷疑是網路攻擊。在法國，500 到 700 家超市的冷藏系統一夜之間故障，價值數百萬歐元的食品因此報廢。11 月初，愛沙尼亞、瑞典和荷蘭也接連發生類似事件。法國官員指稱是與伊朗軍方有關的駭客所為；德黑蘭否認涉入，目前也還沒有公開指名任何個別的加害者。",
+    "這些系統屬於工程師所說的「營運技術」（OT），也就是控制冷卻、抽水等實體流程的硬體設備。今年稍早，伊朗駭客也曾干擾全美各地的水處理設施。資安研究人員說，許多這類設備直接暴露在公開網路上，防護鬆散：已知漏洞沒有修補，基本防護措施也付之闕如。一位研究人員把暴露在網路上的設備形容為資安的「軟肋」。在先前一起以色列食品公司的案例中，攻擊者竄改了冷凍庫的控制設定，弄壞了壓縮機，同時讓辦公室的印表機不斷吐出宣傳文宣。一位事件應變人員認為，AI 讓他們測試各種設定的速度遠遠快過任何人類。",
+    "專家警告，下一次明目張膽的攻擊，造成的破壞可能遠不只是冷凍豌豆。疫苗、血庫、港口和發電廠都仰賴類似的設備。產業團體正敦促華府訂定基本的資安要求，讓民間業者在有心人士得逞之前，先加強自身的防禦。許多人認為，民間持有的關鍵基礎設施如今需要真正的法規管理。對歐文堡的家庭來說，教訓已經很清楚：凡事都要做好準備。"
+  ],
   "summary_zh": "感恩節前美國接連發生大型科技服務中斷，再度引發「日常基礎設施有多脆弱」的討論。從美軍基地到法國等歐洲國家的超市，冷凍設備接連被駭、溫度失控；法國指向與伊朗軍方有關的駭客，伊朗否認。專家指出，大量「營運技術（OT）」設備直接暴露在網路上、防護鬆散，AI 又讓攻擊更快，因此呼籲政府訂定基本資安要求。",
   "words": [
     {"word": "spate", "kk": "[spet]", "pos": "n.", "zh": "（壞事）一連串、接二連三",

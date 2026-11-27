@@ -12,6 +12,7 @@ Every day, one English news story is rewritten as a short B2–C1 level article,
 - Target words in the article show a popup with the Chinese meaning and a short definition on hover or tap
 - 8 word cards: KK phonetics, part of speech, Chinese meaning, English definition, sentence from the article, common collocations, a real-world example sentence (with source), and synonyms / word forms
 - Pronunciation for each word and read-aloud for the whole article, using the browser's built-in Web Speech API (`speechSynthesis`) — no audio files or API keys; voice quality depends on the device
+- A collapsible Chinese translation under each paragraph
 - 8-question fill-in-the-blank quiz
 
 ## Project structure
@@ -53,6 +54,7 @@ Main fields in `data/YYYY-MM-DD.json`:
 | `title` | Article title |
 | `source` | Original news story (outlet, date, URL) |
 | `article` | Array of paragraphs; target words are marked as `{number\|original text}`, e.g. `{5\|tampered with}` |
+| `article_zh` | Chinese translation of each paragraph (same order and length as `article`), shown as a collapsible “中文翻譯” under each paragraph |
 | `summary_zh` | Summary in Chinese |
 | `words` | 8 words: `word`, `kk`, `pos`, `zh`, `def`, `sentence`, `collocations`, `example`, `example_src`, `related` |
 | `quiz` | 8 questions: `q` (blank written as `___`), `a` (word number), `form` (the actual form when it differs from the base word) |
